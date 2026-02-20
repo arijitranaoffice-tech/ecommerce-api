@@ -8,10 +8,8 @@ import org.mapstruct.*;
 /**
  * Mapper for Product entity and DTO conversion.
  */
-@Mapper(nullValuePropertyPolicy = NullValuePropertyPolicy.IGNORE)
+@Mapper(componentModel = "spring", nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
 public interface ProductMapper {
-
-    ProductMapper INSTANCE = Mappers.getMapper(ProductMapper.class);
 
     @Mapping(target = "id", expression = "java(product.getId().toString())")
     @Mapping(target = "category", expression = "java(product.getCategory() != null ? product.getCategory().getName() : null)")

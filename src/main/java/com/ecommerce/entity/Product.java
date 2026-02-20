@@ -2,6 +2,7 @@ package com.ecommerce.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import lombok.experimental.SuperBuilder;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -16,7 +17,7 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
+@SuperBuilder
 public class Product extends BaseEntity {
 
     @Column(nullable = false)
@@ -51,6 +52,7 @@ public class Product extends BaseEntity {
     private Integer lowStockThreshold = 10;
 
     @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
     @Builder.Default
     private ProductStatus status = ProductStatus.DRAFT;
 

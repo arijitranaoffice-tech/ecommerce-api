@@ -8,10 +8,8 @@ import org.mapstruct.Mapping;
 /**
  * Mapper for Cart entity and DTO conversion.
  */
-@Mapper
+@Mapper(componentModel = "spring")
 public interface CartMapper {
-
-    CartMapper INSTANCE = Mappers.getMapper(CartMapper.class);
 
     @Mapping(target = "id", expression = "java(cart.getId().toString())")
     @Mapping(target = "userId", expression = "java(cart.getUser().getId().toString())")

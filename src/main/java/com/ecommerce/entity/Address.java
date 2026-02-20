@@ -37,6 +37,7 @@ public class Address extends BaseEntity {
     private String country;
 
     @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
     @Builder.Default
     private AddressType type = AddressType.SHIPPING;
 

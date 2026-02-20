@@ -73,7 +73,7 @@ public class CategoryController {
 
     @DeleteMapping("/{id}")
     @PreAuthorize("hasAuthority('ADMIN')")
-    public ResponseEntity<ApiResponse<Void>> deleteCategory(@PathVariable UUID id) {
+    public ResponseEntity<ApiResponse<Object>> deleteCategory(@PathVariable UUID id) {
         return categoryRepository.findById(id)
                 .map(category -> {
                     category.setActive(false);

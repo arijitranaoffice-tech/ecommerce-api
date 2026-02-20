@@ -73,7 +73,7 @@ public class AddressController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<ApiResponse<Void>> deleteAddress(@PathVariable UUID id) {
+    public ResponseEntity<ApiResponse<Object>> deleteAddress(@PathVariable UUID id) {
         return addressRepository.findById(id)
                 .map(address -> {
                     addressRepository.delete(address);
@@ -93,7 +93,7 @@ public class AddressController {
                     });
                     // Set this address as default
                     address.setDefault(true);
-                    return ResponseEntity.ok(ApiResponse.success("Default address set successfully", 
+                    return ResponseEntity.ok(ApiResponse.success("Default address set successfully",
                             addressRepository.save(address)));
                 })
                 .orElse(ResponseEntity.notFound().build());

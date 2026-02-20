@@ -38,6 +38,7 @@ public class Review extends BaseEntity {
     private boolean verified = false;
 
     @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
     @Builder.Default
     private ReviewStatus status = ReviewStatus.PENDING;
 

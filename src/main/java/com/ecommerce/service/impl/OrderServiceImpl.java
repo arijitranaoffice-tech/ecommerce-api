@@ -215,7 +215,7 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public List<OrderDTO> getPendingShipmentOrders() {
-        return orderRepository.findPendingShipmentOrders().stream()
+        return orderRepository.findPendingShipmentOrders(OrderStatus.CONFIRMED).stream()
                 .map(orderMapper::toDTO)
                 .toList();
     }

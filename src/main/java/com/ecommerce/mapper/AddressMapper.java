@@ -8,10 +8,8 @@ import org.mapstruct.Mapping;
 /**
  * Mapper for Address entity and DTO conversion.
  */
-@Mapper
+@Mapper(componentModel = "spring")
 public interface AddressMapper {
-
-    AddressMapper INSTANCE = Mappers.getMapper(AddressMapper.class);
 
     @Mapping(target = "id", expression = "java(address.getId().toString())")
     @Mapping(target = "type", expression = "java(address.getType().name())")

@@ -39,14 +39,14 @@ public interface OrderRepository extends JpaRepository<Order, UUID> {
             Pageable pageable
     );
 
-    @Query("SELECT o FROM Order o WHERE o.status = :status AND o.paymentStatus = 'PENDING'")
-    List<Order> findPendingPaymentOrders(@Param("status") OrderStatus status);
+    @Query("SELECT o FROM Order o WHERE o.status = :status AND o.paymentStatus = :paymentStatus")
+    List<Order> findPendingPaymentOrders(@Param("status") OrderStatus status, @Param("paymentStatus") com.ecommerce.entity.PaymentStatus paymentStatus);
 
-    @Query("SELECT o FROM Order o WHERE o.status = 'CONFIRMED' AND o.shippedAt IS NULL")
-    List<Order> findPendingShipmentOrders();
+    @Query("SELECT o FROM Order o WHERE o.status = :status AND o.shippedAt IS NULL")
+    List<Order> findPendingShipmentOrders(@Param("status") OrderStatus status);
 
     @Query("""
-        SELECT o FROM Order o 
+        SELECT o FROM Order o
         WHERE (:status IS NULL OR o.status = :status)
         AND (:userId IS NULL OR o.user.id = :userId)
         ORDER BY o.createdAt DESC

@@ -9,10 +9,8 @@ import org.mapstruct.factory.Mappers;
 /**
  * Mapper for User entity and DTO conversion.
  */
-@Mapper
+@Mapper(componentModel = "spring")
 public interface UserMapper {
-
-    UserMapper INSTANCE = Mappers.getMapper(UserMapper.class);
 
     @Mapping(target = "id", expression = "java(user.getId().toString())")
     @Mapping(target = "role", expression = "java(user.getRole().name())")
