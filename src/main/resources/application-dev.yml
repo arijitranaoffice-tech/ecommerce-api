@@ -1,0 +1,23 @@
+spring:
+  config:
+    activate:
+      on-profile: dev
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/ecommerce_dev
+    username: postgres
+    password: root
+
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: true
+
+  flyway:
+    enabled: true
+
+logging:
+  level:
+    root: INFO
+    com.ecommerce: DEBUG
+    org.springframework.web: DEBUG
