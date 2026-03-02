@@ -10,10 +10,11 @@ Enterprise-grade e-commerce REST API built with Spring Boot 3.2 and PostgreSQL 1
 - 📋 **Order Management** - Complete order lifecycle from creation to delivery
 - 👥 **User Management** - User registration, profile management, and addresses
 - ⭐ **Product Reviews** - Customer reviews and ratings
-- 📊 **Admin Dashboard** - Admin endpoints for managing the store
 - 🔍 **Search & Filter** - Product search and filtering capabilities
 - 📝 **API Documentation** - OpenAPI/Swagger documentation
 - 🏢 **Distributor Portal** - Complete B2B distribution management system
+- 👨‍💼 **Admin Portal** - Comprehensive administration and analytics dashboard
+- 🛍️ **User Portal** - Enhanced customer experience with wishlist and notifications
 
 ### Distributor Portal Features
 
@@ -25,6 +26,27 @@ Enterprise-grade e-commerce REST API built with Spring Boot 3.2 and PostgreSQL 1
 - **Customer Management** - B2B customer relationships, credit limits, pricing tiers
 - **Analytics Dashboard** - Sales metrics, inventory reports, commission tracking
 - **Warehouse Management** - Multiple warehouses, stock locations, bin management
+
+### Admin Portal Features
+
+- **Dashboard Analytics** - Real-time overview of sales, orders, products, and customers
+- **Sales Analytics** - Daily, weekly, monthly, and yearly sales tracking with trends
+- **Product Analytics** - Inventory status, stock levels, category performance
+- **Customer Analytics** - Customer count, retention rates, lifetime value
+- **Order Analytics** - Order status breakdown, fulfillment rates, cancellation tracking
+- **Banner Management** - Homepage and promotional banners with impression/click tracking
+- **Coupon System** - Discount codes with percentage/fixed amounts, usage limits, validity periods
+- **Activity Logs** - Complete audit trail of all admin actions
+- **Reports Generation** - Sales reports, inventory reports, customer reports
+
+### User Portal Features
+
+- **Wishlist** - Save favorite products, prioritize items, quick add to cart
+- **Notifications** - Order updates, shipping notifications, promotions, system messages
+- **Payment Methods** - Save and manage multiple payment options, set default payment
+- **Coupon Management** - Browse available coupons, validate and apply discount codes
+- **Order Tracking** - Real-time order status updates
+- **Product Reviews** - Rate and review purchased products
 
 ## Tech Stack
 
@@ -194,6 +216,58 @@ mvn spring-boot:run
 | GET | `/distributors/dashboard/{distributorId}/top-products` | Get top products |
 | GET | `/distributors/dashboard/{distributorId}/low-stock` | Get low stock products |
 
+### Admin Portal
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/admin/dashboard` | Get complete dashboard data |
+| GET | `/admin/dashboard/overview` | Get overview statistics |
+| GET | `/admin/dashboard/sales` | Get sales analytics |
+| GET | `/admin/dashboard/products` | Get product analytics |
+| GET | `/admin/dashboard/customers` | Get customer analytics |
+| GET | `/admin/dashboard/orders` | Get order analytics |
+| POST | `/admin/banners` | Create banner |
+| PUT | `/admin/banners/{id}` | Update banner |
+| DELETE | `/admin/banners/{id}` | Delete banner |
+| GET | `/admin/banners` | Get all banners |
+| GET | `/admin/banners/{id}` | Get banner by ID |
+| GET | `/admin/banners/active` | Get active banners |
+| POST | `/admin/banners/{id}/impression` | Record banner impression |
+| POST | `/admin/banners/{id}/click` | Record banner click |
+| POST | `/admin/coupons` | Create coupon |
+| PUT | `/admin/coupons/{id}` | Update coupon |
+| DELETE | `/admin/coupons/{id}` | Delete coupon |
+| GET | `/admin/coupons` | Get all coupons |
+| GET | `/admin/coupons/{id}` | Get coupon by ID |
+| POST | `/admin/coupons/deactivate-expired` | Deactivate expired coupons |
+| GET | `/admin/activity-logs` | Get activity logs |
+| GET | `/admin/activity-logs/user/{userId}` | Get user activity logs |
+| GET | `/admin/activity-logs/range` | Get logs by date range |
+| POST | `/admin/activity-logs` | Log admin activity |
+| GET | `/admin/reports/sales` | Generate sales report |
+| GET | `/admin/reports/inventory` | Generate inventory report |
+| GET | `/admin/reports/customers` | Generate customer report |
+
+### User Portal
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/user/wishlist` | Get user's wishlist |
+| POST | `/user/wishlist/add` | Add product to wishlist |
+| DELETE | `/user/wishlist/remove` | Remove product from wishlist |
+| DELETE | `/user/wishlist/clear` | Clear entire wishlist |
+| GET | `/user/notifications` | Get user notifications |
+| GET | `/user/notifications/unread` | Get unread notifications |
+| GET | `/user/notifications/unread-count` | Get unread count |
+| POST | `/user/notifications/{id}/read` | Mark notification as read |
+| POST | `/user/notifications/read-all` | Mark all as read |
+| POST | `/user/payment-methods` | Add payment method |
+| PUT | `/user/payment-methods/{id}` | Update payment method |
+| DELETE | `/user/payment-methods/{id}` | Remove payment method |
+| GET | `/user/payment-methods` | Get all payment methods |
+| GET | `/user/payment-methods/default` | Get default payment method |
+| POST | `/user/payment-methods/{id}/set-default` | Set default payment method |
+| POST | `/user/coupons/validate` | Validate coupon code |
+| GET | `/user/coupons/available` | Get available coupons |
+
 ## Configuration
 
 ### Environment Variables
@@ -265,6 +339,35 @@ ecommerce-api/
 ## License
 
 This project is licensed under the MIT License.
+
+## Project Statistics
+
+- **Total Entities**: 32+
+- **Total DTOs**: 50+
+- **Total Repositories**: 23
+- **Total API Endpoints**: 100+
+- **Database Tables**: 30+
+- **Flyway Migrations**: 4
+
+## Recent Updates
+
+### v1.1.0 - Admin & User Portal (Latest)
+- ✅ Admin Dashboard with comprehensive analytics
+- ✅ Banner Management for promotions
+- ✅ Coupon/Discount System
+- ✅ Admin Activity Logs for audit trail
+- ✅ Report Generation (Sales, Inventory, Customers)
+- ✅ User Wishlist functionality
+- ✅ Notification System
+- ✅ Payment Method Management
+- ✅ Enhanced User Portal experience
+
+### v1.0.0 - Distributor Portal
+- ✅ Complete B2B distribution management
+- ✅ Multi-tier distributor system
+- ✅ Commission tracking
+- ✅ Multi-warehouse inventory
+- ✅ Distributor analytics dashboard
 
 ## Support
 
