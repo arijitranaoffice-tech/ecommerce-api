@@ -51,6 +51,18 @@ public class SecurityConfig {
                         .requestMatchers("/categories/**").permitAll()
                         .requestMatchers("/swagger-ui/**", "/swagger-ui.html", "/v3/api-docs/**", "/api-docs/**", "/api-docs").permitAll()
                         .requestMatchers("/actuator/**").permitAll()
+                        
+                        // OAuth2 callback
+                        .requestMatchers("/auth/oauth2/**").permitAll()
+                        
+                        // Public shipment tracking
+                        .requestMatchers("/shipments/track/**").permitAll()
+                        
+                        // Public email endpoints
+                        .requestMatchers("/email/send/order-confirmation").permitAll()
+                        .requestMatchers("/email/send/password-reset").permitAll()
+                        .requestMatchers("/email/send/welcome").permitAll()
+                        .requestMatchers("/email/send/shipment").permitAll()
 
                         // Admin endpoints
                         .requestMatchers("/admin/**").hasAuthority(UserRole.ADMIN.name())
@@ -65,9 +77,17 @@ public class SecurityConfig {
 
                         // Distributor endpoints
                         .requestMatchers("/distributors/**").hasAnyAuthority(UserRole.DISTRIBUTOR.name(), UserRole.ADMIN.name())
+                        
+                        // Seller endpoints
+                        .requestMatchers("/sellers/**").hasAnyAuthority(UserRole.SELLER.name(), UserRole.ADMIN.name())
 
                         // All other requests require authentication
                         .anyRequest().authenticated()
+                )
+                .oauth2Login(oauth2 -> oauth2
+                        .loginPage("/auth/login")
+                        .defaultSuccessUrl("/auth/oauth2/success", true)
+                        .failureUrl("/auth/login?error=true")
                 )
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authenticationProvider(authenticationProvider())

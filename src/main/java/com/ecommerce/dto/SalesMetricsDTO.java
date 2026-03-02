@@ -6,10 +6,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
 
 /**
- * DTO for sales metrics.
+ * DTO for Sales Metrics.
  */
 @Data
 @Builder
@@ -25,7 +24,7 @@ public class SalesMetricsDTO {
 
     private BigDecimal quarterSales;
 
-    private BigDecimal yearSales;
+    private BigDecimal yearlySales;
 
     private BigDecimal totalSales;
 
@@ -43,5 +42,5 @@ public class SalesMetricsDTO {
 
     private BigDecimal averageOrderValue;
 
-    private LocalDate lastOrderDate;
+    private String lastOrderDate;
 }

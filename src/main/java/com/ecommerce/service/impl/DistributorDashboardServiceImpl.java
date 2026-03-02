@@ -104,7 +104,7 @@ public class DistributorDashboardServiceImpl implements DistributorDashboardServ
                 .weekSales(weekSales)
                 .monthSales(monthSales)
                 .quarterSales(quarterSales)
-                .yearSales(yearSales)
+                .yearlySales(yearSales)
                 .totalSales(totalSales)
                 .todayOrders((int) todayOrders)
                 .weekOrders((int) weekOrders)

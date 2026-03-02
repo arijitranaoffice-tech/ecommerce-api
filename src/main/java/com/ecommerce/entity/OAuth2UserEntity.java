@@ -3,6 +3,8 @@ package com.ecommerce.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDateTime;
+
 /**
  * OAuth2 User entity for Google authentication.
  */
@@ -13,7 +15,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class OAuth2User extends BaseEntity {
+public class OAuth2UserEntity extends BaseEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
